@@ -31,11 +31,18 @@ class DatabaseManager {
     private suspend fun establishConnection() {
         withContext(Dispatchers.IO) {
             try {
-//                Log.i("DatabaseManager", "Establishing database connection...")
                 Class.forName("net.sourceforge.jtds.jdbc.Driver")
                 DriverManager.setLoginTimeout(timeoutInSeconds)
-                connection = DriverManager.getConnection(url!!, username!!, password!!)
-//                Log.i("DatabaseManager", "Database connection established successfully.")
+
+                // ✅ FIX: Construct full JDBC URL manually with SQL auth
+                val fixedUrl = "jdbc:jtds:sqlserver://$url;" +
+                        "user=$username;" +
+                        "password=$password;" +
+                        "domain=;" + // disables Windows auth
+                        "authenticationScheme=java;" // forces SQL auth
+
+                connection = DriverManager.getConnection(fixedUrl)
+
             } catch (e: ClassNotFoundException) {
                 Log.e("DatabaseManager", "Error establishing database connection: ${e.message}")
                 throw e
@@ -45,6 +52,7 @@ class DatabaseManager {
             }
         }
     }
+
 
     private suspend fun reconnectIfNecessary(forceEstablish: Boolean = false) {
         withContext(Dispatchers.IO) {
