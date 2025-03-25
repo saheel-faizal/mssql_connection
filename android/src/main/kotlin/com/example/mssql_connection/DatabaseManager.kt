@@ -35,11 +35,14 @@ class DatabaseManager {
                 DriverManager.setLoginTimeout(timeoutInSeconds)
 
                 // ✅ FIX: Construct full JDBC URL manually with SQL auth
-                val fixedUrl = "jdbc:jtds:sqlserver://$url;" +
-                        "user=$username;" +
-                        "password=$password;" +
-                        "domain=;" + // disables Windows auth
-                        "authenticationScheme=java;" // forces SQL auth
+                val fixedUrl = if (url!!.startsWith("jdbc:jtds:sqlserver://")) {
+                    // Use it as-is, just append required params
+                    "$url;user=$username;password=$password;domain=;authenticationScheme=java;"
+                } else {
+                    // Construct from parts
+                    "jdbc:jtds:sqlserver://$url;user=$username;password=$password;domain=;authenticationScheme=java;"
+                }
+
 
                 connection = DriverManager.getConnection(fixedUrl)
 
