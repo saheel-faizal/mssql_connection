@@ -1,3 +1,97 @@
+# Add project specific ProGuard rules here.
+# By default, the flags in this file are appended to flags specified
+# in /usr/local/android-sdk/tools/proguard/proguard-android.txt
+# You can edit the include path and order by changing the proguardFiles
+# directive in build.gradle.
+#
+# For more details, see
+#   https://developer.android.com/studio/build/shrink-code.html
+
+# Suppress warnings for Azure-related classes
+-dontwarn com.azure.core.credential.AccessToken
+-dontwarn com.azure.core.credential.TokenCredential
+-dontwarn com.azure.core.credential.TokenRequestContext
+-dontwarn com.azure.core.http.HttpPipeline
+-dontwarn com.azure.core.http.HttpPipelineBuilder
+-dontwarn com.azure.core.http.policy.HttpLogOptions
+-dontwarn com.azure.core.http.policy.HttpLoggingPolicy
+-dontwarn com.azure.core.http.policy.HttpPipelinePolicy
+-dontwarn com.azure.core.http.policy.HttpPolicyProviders
+-dontwarn com.azure.core.http.policy.RetryPolicy
+-dontwarn com.azure.identity.ManagedIdentityCredential
+-dontwarn com.azure.identity.ManagedIdentityCredentialBuilder
+-dontwarn com.azure.security.keyvault.keys.KeyClient
+-dontwarn com.azure.security.keyvault.keys.KeyClientBuilder
+-dontwarn com.azure.security.keyvault.keys.cryptography.CryptographyClient
+-dontwarn com.azure.security.keyvault.keys.cryptography.CryptographyClientBuilder
+-dontwarn com.azure.security.keyvault.keys.cryptography.models.KeyWrapAlgorithm
+-dontwarn com.azure.security.keyvault.keys.cryptography.models.SignResult
+-dontwarn com.azure.security.keyvault.keys.cryptography.models.SignatureAlgorithm
+-dontwarn com.azure.security.keyvault.keys.cryptography.models.UnwrapResult
+-dontwarn com.azure.security.keyvault.keys.cryptography.models.VerifyResult
+-dontwarn com.azure.security.keyvault.keys.models.JsonWebKey
+-dontwarn com.azure.security.keyvault.keys.models.KeyType
+-dontwarn com.azure.security.keyvault.keys.models.KeyVaultKey
+
+# Suppress warnings for MSAL (Microsoft Authentication Library) classes
+-dontwarn com.microsoft.aad.msal4j.AbstractClientApplicationBase$Builder
+-dontwarn com.microsoft.aad.msal4j.ClientCredentialFactory
+-dontwarn com.microsoft.aad.msal4j.ClientCredentialParameters$ClientCredentialParametersBuilder
+-dontwarn com.microsoft.aad.msal4j.ClientCredentialParameters
+-dontwarn com.microsoft.aad.msal4j.ConfidentialClientApplication$Builder
+-dontwarn com.microsoft.aad.msal4j.ConfidentialClientApplication
+-dontwarn com.microsoft.aad.msal4j.IAccount
+-dontwarn com.microsoft.aad.msal4j.IAuthenticationResult
+-dontwarn com.microsoft.aad.msal4j.IClientCredential
+-dontwarn com.microsoft.aad.msal4j.IClientSecret
+-dontwarn com.microsoft.aad.msal4j.ITokenCacheAccessAspect
+-dontwarn com.microsoft.aad.msal4j.IntegratedWindowsAuthenticationParameters$IntegratedWindowsAuthenticationParametersBuilder
+-dontwarn com.microsoft.aad.msal4j.IntegratedWindowsAuthenticationParameters
+-dontwarn com.microsoft.aad.msal4j.InteractiveRequestParameters$InteractiveRequestParametersBuilder
+-dontwarn com.microsoft.aad.msal4j.InteractiveRequestParameters
+-dontwarn com.microsoft.aad.msal4j.MsalInteractionRequiredException
+-dontwarn com.microsoft.aad.msal4j.PublicClientApplication$Builder
+-dontwarn com.microsoft.aad.msal4j.PublicClientApplication
+-dontwarn com.microsoft.aad.msal4j.SilentParameters$SilentParametersBuilder
+-dontwarn com.microsoft.aad.msal4j.SilentParameters
+-dontwarn com.microsoft.aad.msal4j.SystemBrowserOptions$SystemBrowserOptionsBuilder
+-dontwarn com.microsoft.aad.msal4j.SystemBrowserOptions
+-dontwarn com.microsoft.aad.msal4j.UserNamePasswordParameters$UserNamePasswordParametersBuilder
+-dontwarn com.microsoft.aad.msal4j.UserNamePasswordParameters
+
+# Suppress warnings for Gson classes
+-dontwarn com.google.gson.JsonArray
+-dontwarn com.google.gson.JsonElement
+-dontwarn com.google.gson.JsonObject
+-dontwarn com.google.gson.JsonParser
+
+# Suppress warnings for Java management and security classes
+-dontwarn java.lang.management.ManagementFactory
+-dontwarn java.lang.management.MemoryMXBean
+-dontwarn java.lang.management.MemoryUsage
+-dontwarn javax.naming.NameNotFoundException
+-dontwarn javax.naming.NamingEnumeration
+-dontwarn javax.naming.NamingException
+-dontwarn javax.naming.directory.Attribute
+-dontwarn javax.naming.directory.Attributes
+-dontwarn javax.naming.directory.DirContext
+-dontwarn javax.naming.directory.InitialDirContext
+-dontwarn javax.security.auth.callback.NameCallback
+-dontwarn javax.security.auth.kerberos.KerberosPrincipal
+-dontwarn javax.security.auth.login.AppConfigurationEntry$LoginModuleControlFlag
+-dontwarn javax.security.auth.login.AppConfigurationEntry
+-dontwarn javax.security.auth.login.Configuration
+-dontwarn javax.security.auth.login.LoginContext
+
+# Suppress warnings for XML processing classes
+-dontwarn javax.xml.stream.XMLInputFactory
+-dontwarn javax.xml.stream.XMLOutputFactory
+-dontwarn javax.xml.stream.XMLStreamException
+-dontwarn javax.xml.stream.XMLStreamReader
+-dontwarn javax.xml.stream.XMLStreamWriter
+-dontwarn javax.xml.transform.stax.StAXResult
+-dontwarn javax.xml.transform.stax.StAXSource
+
 # Suppress warnings for jcifs and org.ietf.jgss classes
 -dontwarn jcifs.Config
 -dontwarn jcifs.smb.NtlmPasswordAuthentication
@@ -8,3 +102,39 @@
 -dontwarn org.ietf.jgss.GSSManager
 -dontwarn org.ietf.jgss.GSSName
 -dontwarn org.ietf.jgss.Oid
+
+# Suppress warnings for ANTLR classes
+-dontwarn org.antlr.v4.runtime.ANTLRErrorListener
+-dontwarn org.antlr.v4.runtime.BaseErrorListener
+-dontwarn org.antlr.v4.runtime.CharStream
+-dontwarn org.antlr.v4.runtime.CharStreams
+-dontwarn org.antlr.v4.runtime.Lexer
+-dontwarn org.antlr.v4.runtime.RuntimeMetaData
+-dontwarn org.antlr.v4.runtime.Token
+-dontwarn org.antlr.v4.runtime.Vocabulary
+-dontwarn org.antlr.v4.runtime.VocabularyImpl
+-dontwarn org.antlr.v4.runtime.atn.ATN
+-dontwarn org.antlr.v4.runtime.atn.ATNDeserializer
+-dontwarn org.antlr.v4.runtime.atn.ATNSimulator
+-dontwarn org.antlr.v4.runtime.atn.DecisionState
+-dontwarn org.antlr.v4.runtime.atn.LexerATNSimulator
+-dontwarn org.antlr.v4.runtime.atn.PredictionContextCache
+-dontwarn org.antlr.v4.runtime.dfa.DFA
+
+# Suppress warnings for Bouncy Castle classes
+-dontwarn org.bouncycastle.jce.provider.BouncyCastleProvider
+-dontwarn org.bouncycastle.openssl.PEMDecryptorProvider
+-dontwarn org.bouncycastle.openssl.PEMEncryptedKeyPair
+-dontwarn org.bouncycastle.openssl.PEMKeyPair
+-dontwarn org.bouncycastle.openssl.PEMParser
+-dontwarn org.bouncycastle.openssl.jcajce.JcaPEMKeyConverter
+-dontwarn org.bouncycastle.openssl.jcajce.JcePEMDecryptorProviderBuilder
+
+# Suppress warnings for Reactor classes
+-dontwarn reactor.core.publisher.FluxSink$OverflowStrategy
+-dontwarn reactor.core.publisher.FluxSink
+-dontwarn reactor.core.publisher.Mono
+-dontwarn reactor.core.publisher.ReplayProcessor
+
+# Suppress warnings for custom classes
+-dontwarn com.example.mssql_connection.MssqlConnectionPlugin
